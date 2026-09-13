@@ -1,0 +1,5 @@
+# Never commit large downloadable model assets to Git history.
+*.onnx
+*.tar.bz2
+*.part
+release-staging/
