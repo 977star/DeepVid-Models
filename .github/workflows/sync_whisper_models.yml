@@ -13,58 +13,47 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Process & Release Whisper Small
+      - name: Process & Release Slim Whisper Small (Pure INT8)
         run: |
           set -e
-          echo "=== 1. Processing Whisper Small ==="
+          echo "=== 1. Processing Slim Whisper Small ==="
           mkdir -p work_small
           cd work_small
 
           echo "Downloading upstream sherpa-onnx-whisper-small..."
-          curl -fL -o whisper-small-v1.0.0.tar.bz2 https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-small.tar.bz2
+          curl -fL -o upstream_small.tar.bz2 https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-small.tar.bz2
           curl -fL -o silero_vad.onnx https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx
 
-          echo "Calculating checksums..."
+          echo "Extracting archive..."
+          tar -xjf upstream_small.tar.bz2
+
+          echo "Files before stripping:"
+          ls -lh sherpa-onnx-whisper-small/
+
+          echo "Stripping redundant FP32 files (saving ~920MB uncompressed)..."
+          rm -f sherpa-onnx-whisper-small/small-decoder.onnx
+          rm -f sherpa-onnx-whisper-small/small-encoder.onnx
+
+          echo "Files after stripping (Pure INT8):"
+          ls -lh sherpa-onnx-whisper-small/
+
+          echo "Re-packaging into slim tar.bz2..."
+          tar -cjf whisper-small-v1.0.0.tar.bz2 sherpa-onnx-whisper-small/
+
+          echo "Calculating checksums & sizes..."
+          ls -lh whisper-small-v1.0.0.tar.bz2
           sha256sum whisper-small-v1.0.0.tar.bz2 > checksums.txt
           sha256sum silero_vad.onnx >> checksums.txt
           cat checksums.txt
 
-          echo "Creating Release whisper-small-v1.0.0..."
-          gh release create whisper-small-v1.0.0 \
+          echo "Uploading slim release assets to whisper-small-v1.0.0..."
+          gh release upload whisper-small-v1.0.0 \
             whisper-small-v1.0.0.tar.bz2 \
             silero_vad.onnx \
             checksums.txt \
-            --title "Whisper Small v1.0.0 (Balanced Tier)" \
-            --notes "OpenAI Whisper Small model package for DeepVid local ASR (Balanced Tier). Supports 56+ languages and bilingual mixed speech."
+            --clobber
+
           cd ..
           rm -rf work_small
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Process & Release Whisper Large-v3-Turbo
-        run: |
-          set -e
-          echo "=== 2. Processing Whisper Large-v3-Turbo ==="
-          mkdir -p work_turbo
-          cd work_turbo
-
-          echo "Downloading upstream sherpa-onnx-whisper-turbo..."
-          curl -fL -o whisper-large-v3-turbo-v1.0.0.tar.bz2 https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-turbo.tar.bz2
-          curl -fL -o silero_vad.onnx https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx
-
-          echo "Calculating checksums..."
-          sha256sum whisper-large-v3-turbo-v1.0.0.tar.bz2 > checksums.txt
-          sha256sum silero_vad.onnx >> checksums.txt
-          cat checksums.txt
-
-          echo "Creating Release whisper-large-v3-turbo-v1.0.0..."
-          gh release create whisper-large-v3-turbo-v1.0.0 \
-            whisper-large-v3-turbo-v1.0.0.tar.bz2 \
-            silero_vad.onnx \
-            checksums.txt \
-            --title "Whisper Large-v3-Turbo v1.0.0 (High Precision Tier)" \
-            --notes "OpenAI Whisper Large-v3-Turbo model package for DeepVid local ASR (High Precision Tier). Flagship accuracy and noise filtering."
-          cd ..
-          rm -rf work_turbo
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
