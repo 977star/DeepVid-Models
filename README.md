@@ -7,7 +7,7 @@ DeepVid Studio 的按需下载模型仓库。客户端程序本身不内置大�
 | 用途 | 模型包 | 支持语言 | 下载体积 | 状态 |
 | --- | --- | --- | --- | --- |
 | 本地离线转写 (轻量档) | SenseVoiceSmall INT8 + Silero VAD | 中文、粤语、英语、日语、韩语 | 下载约 156 MB；安装后约 230 MB | 稳定就绪 |
-| 本地离线转写 (均衡档) | Whisper Small (INT8) + Silero VAD | 全球 56 种语言、中英混说 | 下载约 610 MB；安装后约 650 MB | 资产就绪 (测试中) |
+| 本地离线转写 (均衡档) | Whisper Small (纯 INT8) + Silero VAD | 全球 56 种语言、中英混说 | 下载约 200 MB；安装后约 358 MB | 资产就绪 (测试中) |
 | 本地离线转写 (高精档) | Whisper Large-v3-Turbo (INT8) + Silero VAD | 全球 56 种语言、旗舰降噪抗口音 | 下载约 538 MB；安装后约 580 MB | 资产就绪 (测试中) |
 
 模型包用于 DeepVid Studio 的本地 ASR。它在用户电脑上运行，音频不会被发送到 DeepVid 的服务器。
