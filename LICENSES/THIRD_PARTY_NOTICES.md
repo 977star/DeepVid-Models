@@ -16,6 +16,13 @@ The official SenseVoice project states that commercial use is permitted subject 
 
 The VAD file is retained with its upstream provenance. Its applicable upstream licence and notices must be preserved by downstream users.
 
+## Whisper (Small & Large-v3-Turbo)
+
+- Upstream project: [openai/whisper](https://github.com/openai/whisper)
+- Model architecture: Robust Speech Recognition via Large-Scale Weak Supervision
+- Distribution source: [k2-fsa/sherpa-onnx model releases](https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models)
+- Licence: [MIT License](https://github.com/openai/whisper/blob/main/LICENSE)
+
 ## Planned client runtime (not distributed by this repository)
 
 DeepVid Studio will use [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx), licensed under Apache-2.0, to load the model locally. The runtime is delivered with the application and is not a model-release asset in this repository.

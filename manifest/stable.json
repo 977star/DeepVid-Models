@@ -5,12 +5,14 @@
     {
       "id": "sensevoice-small-int8",
       "version": "1.0.0",
+      "tier": "lightweight",
       "display_name": "SenseVoiceSmall INT8",
       "kind": "asr",
       "runtime": "sherpa-onnx-sense-voice",
       "languages": ["zh", "yue", "en", "ja", "ko"],
       "release_tag": "sensevoice-small-int8-v1.0.0",
       "install_directory": "sensevoice-small-int8/1.0.0",
+      "is_available_for_download": true,
       "assets": [
         {
           "id": "sensevoice-model",
@@ -24,6 +26,80 @@
         {
           "id": "silero-vad",
           "url": "https://github.com/977star/DeepVid-Models/releases/download/sensevoice-small-int8-v1.0.0/silero_vad.onnx",
+          "file_name": "silero_vad.onnx",
+          "bytes": 643854,
+          "sha256": "9e2449e1087496d8d4caba907f23e0bd3f78d91fa552479bb9c23ac09cbb1fd6"
+        }
+      ]
+    },
+    {
+      "id": "whisper-small",
+      "version": "1.0.0",
+      "tier": "balanced",
+      "display_name": "Whisper Small",
+      "kind": "asr",
+      "runtime": "sherpa-onnx-whisper",
+      "languages": [
+        "zh", "yue", "en", "ja", "ko", "fr", "de", "es", "ru", "it", "pt", "nl",
+        "ar", "hi", "tr", "vi", "th", "id", "ms", "pl", "uk", "cs", "el", "he",
+        "sv", "da", "fi", "no", "ro", "hu", "fa", "ur", "bn", "ta", "te", "fil",
+        "my", "km", "lo", "mn", "sk", "sl", "bg", "hr", "sr", "lt", "lv", "et",
+        "ca", "gl", "eu", "af", "sw", "is", "ga", "cy"
+      ],
+      "release_tag": "whisper-small-v1.0.0",
+      "install_directory": "whisper-small/1.0.0",
+      "is_available_for_download": false,
+      "description": "多语种高容错 · 适合中英技术混说与小语种 · 资产就绪测试中",
+      "assets": [
+        {
+          "id": "whisper-small-model",
+          "url": "https://github.com/977star/DeepVid-Models/releases/download/whisper-small-v1.0.0/whisper-small-v1.0.0.tar.bz2",
+          "file_name": "whisper-small-v1.0.0.tar.bz2",
+          "bytes": 639387718,
+          "sha256": "486a46afbb7ba798507190ffe02fea2dd726049af212e774537efac6afb210a6",
+          "archive": "tar.bz2",
+          "extract_directory": "sherpa-onnx-whisper-small"
+        },
+        {
+          "id": "silero-vad",
+          "url": "https://github.com/977star/DeepVid-Models/releases/download/whisper-small-v1.0.0/silero_vad.onnx",
+          "file_name": "silero_vad.onnx",
+          "bytes": 643854,
+          "sha256": "9e2449e1087496d8d4caba907f23e0bd3f78d91fa552479bb9c23ac09cbb1fd6"
+        }
+      ]
+    },
+    {
+      "id": "whisper-large-v3-turbo",
+      "version": "1.0.0",
+      "tier": "high_precision",
+      "display_name": "Whisper Large-v3-Turbo",
+      "kind": "asr",
+      "runtime": "sherpa-onnx-whisper",
+      "languages": [
+        "zh", "yue", "en", "ja", "ko", "fr", "de", "es", "ru", "it", "pt", "nl",
+        "ar", "hi", "tr", "vi", "th", "id", "ms", "pl", "uk", "cs", "el", "he",
+        "sv", "da", "fi", "no", "ro", "hu", "fa", "ur", "bn", "ta", "te", "fil",
+        "my", "km", "lo", "mn", "sk", "sl", "bg", "hr", "sr", "lt", "lv", "et",
+        "ca", "gl", "eu", "af", "sw", "is", "ga", "cy"
+      ],
+      "release_tag": "whisper-large-v3-turbo-v1.0.0",
+      "install_directory": "whisper-large-v3-turbo/1.0.0",
+      "is_available_for_download": false,
+      "description": "旗舰级识别精度 · 强力降噪抗方言口音 · 资产就绪测试中",
+      "assets": [
+        {
+          "id": "whisper-turbo-model",
+          "url": "https://github.com/977star/DeepVid-Models/releases/download/whisper-large-v3-turbo-v1.0.0/whisper-large-v3-turbo-v1.0.0.tar.bz2",
+          "file_name": "whisper-large-v3-turbo-v1.0.0.tar.bz2",
+          "bytes": 563790207,
+          "sha256": "b11acbbcd660b44a8e0df33724feb5aaa709cf65668f2823d59f656312544f22",
+          "archive": "tar.bz2",
+          "extract_directory": "sherpa-onnx-whisper-turbo"
+        },
+        {
+          "id": "silero-vad",
+          "url": "https://github.com/977star/DeepVid-Models/releases/download/whisper-large-v3-turbo-v1.0.0/silero_vad.onnx",
           "file_name": "silero_vad.onnx",
           "bytes": 643854,
           "sha256": "9e2449e1087496d8d4caba907f23e0bd3f78d91fa552479bb9c23ac09cbb1fd6"
